@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <link rel="stylesheet" href="assets/modern-design-system.css">
+    <link rel="stylesheet" href="assets/portfolio-styles.css">
+    <style>
+        body { height: 200vh; padding-top: 80px; }
+        .test-section { 
+            height: 100vh; 
+            padding: 2rem; 
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="scroll-progress" id="scroll-progress"></div>
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Test</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="#test1" class="nav__link active-link">Test 1</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#test2" class="nav__link">Test 2</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav__btns">
+                <i class="change-theme" id="theme-button">🌙</i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="test-section" id="test1">
+            <h2>Test Section 1</h2>
+            <p>This section tests the glassmorphism navigation bar and scroll progress indicator.</p>
+            <p>Scroll down to see the progress indicator work and notice the blur effects on the navigation.</p>
+        </div>
+        
+        <div class="test-section" id="test2">
+            <h2>Test Section 2</h2>
+            <p>This section continues the scroll test.</p>
+            <p>The navigation should have glassmorphism effects with backdrop-filter blur.</p>
+        </div>
+    </main>
+
+    <script>
+        // Simple scroll progress test
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById("scroll-progress");
+            if (!scrollProgress) return;
+            
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            if (documentHeight <= 0) {
+                scrollProgress.style.width = "0%";
+                return;
+            }
+            
+            const scrollPercentage = Math.min(Math.max((scrollTop / documentHeight) * 100, 0), 100);
+            scrollProgress.style.width = `${scrollPercentage}%`;
+        }
+
+        window.addEventListener("scroll", updateScrollProgress);
+        document.addEventListener("DOMContentLoaded", updateScrollProgress);
+
+        // Theme toggle test
+        document.getElementById('theme-button').addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
+</body>
+</html>
