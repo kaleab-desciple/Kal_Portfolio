@@ -647,7 +647,7 @@ function initializeKeyboardNavigation() {
         announceToScreenReader('Form validation successful. Opening email client.');
         
         // Trigger the existing mailto functionality
-        const mailtoLink = 'mailto:kaleablegesse2@gmail.com?subject=Testing%20out%20mailto!&body=This%20is%20only%20a%20test!';
+        const mailtoLink = 'mailto:kaleablegesse3@gmail.com?subject=Testing%20out%20mailto!&body=This%20is%20only%20a%20test!';
         setTimeout(() => {
           window.location.href = mailtoLink;
           
